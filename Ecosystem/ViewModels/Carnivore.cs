@@ -9,4 +9,8 @@ public partial class Carnivore: Animal
     { 
         
     }
+    private void Attack()
+    {
+
+    }
 }
