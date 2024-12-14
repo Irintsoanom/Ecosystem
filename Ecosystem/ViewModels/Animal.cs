@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Collections.Generic;
 
 namespace Ecosystem.ViewModels;
 
@@ -20,14 +21,15 @@ public partial class Animal : LivingCreature
     private Point velocity;
 
     public static readonly Random rand = new Random();
+    private List<int> randVelocity = new List<int>() { -2, -1, 1, 2 };
     
 
     public Animal(Point location) : base(location)
     {
         this.sex = "Male";
-        this.xVelocity = rand.Next(-1, 2);
-        this.yVelocity = rand.Next(-1, 2);
-        this.velocity = new Point(xVelocity, yVelocity);
+        this.xVelocity = rand.Next(randVelocity.Count);
+        this.yVelocity = rand.Next(randVelocity.Count);
+        this.velocity = new Point(randVelocity[xVelocity], randVelocity[yVelocity]);
     }
 
     public void Move()
