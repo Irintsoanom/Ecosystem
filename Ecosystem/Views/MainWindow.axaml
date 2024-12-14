@@ -27,10 +27,6 @@
         </ItemsControl.ItemsPanel>
 
         <ItemsControl.DataTemplates>
-            <DataTemplate DataType="{x:Type vm:Ball}">
-                <Image Width="64" Height="64"
-                    Source="/Assets/Ball.png" />
-            </DataTemplate>
 
 			<DataTemplate DataType="{x:Type vm:Lion}">
 				<Image Width="64" Height="64"
