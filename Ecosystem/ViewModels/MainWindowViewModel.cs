@@ -23,5 +23,6 @@ public partial class MainWindowViewModel : GameBase
     protected override void Tick()
     {
         ball.Tick();
+        lion.Move();
     }
 }
