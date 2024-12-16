@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Ecosystem.ViewModels;
 
@@ -22,7 +23,7 @@ public partial class Animal : LivingCreature
 
     public static readonly Random rand = new Random();
     private List<int> randVelocity = new List<int>() { -2, -1, 1, 2 };
-    
+
 
     public Animal(Point location) : base(location)
     {
@@ -35,6 +36,11 @@ public partial class Animal : LivingCreature
     public void Move()
     {
         Location = Location + velocity;
+        if (Location.Y > 450)
+        {
+            
+        }
+        
     }
     private void Defecate()
     {
