@@ -33,6 +33,11 @@
                     Source="/Assets/lion.png" />
 			</DataTemplate>
 
+			<DataTemplate DataType="{x:Type vm:Rabbit}">
+				<Image Width="64" Height="64"
+                    Source="/Assets/rabbit.png"/>
+			</DataTemplate>
+
         </ItemsControl.DataTemplates>
     </ItemsControl>
 </Window>
