@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 
 namespace Ecosystem.ViewModels;
 
@@ -12,8 +13,9 @@ public partial class LivingCreature : GameObject
     [ObservableProperty]
     private Point startingPoint = new Point(1.0, 0);
 
-    public LivingCreature(Point location):base(location) {
-        
+    public LivingCreature(Point location):base(location) 
+    {
+
     }
 
     private void Feed()
