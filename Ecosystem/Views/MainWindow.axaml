@@ -15,6 +15,9 @@
             <Setter Property="Canvas.Top" Value="{Binding Location.Y}" />
         </Style>
     </Window.Styles>
+	<Window.Background>
+		<ImageBrush Source="/Assets/background.png" />
+	</Window.Background>
     <ItemsControl
         ItemsSource="{Binding GameObjects}"
         Width="{Binding Width, Mode=OneWay}"
