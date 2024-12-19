@@ -5,8 +5,8 @@ namespace Ecosystem.ViewModels;
 
 public partial class MainWindowViewModel : GameBase
 {
-    public int Width { get; } = 800;
-    public int Height { get; } = 450;
+    public int Width { get; } = 1600;
+    public int Height { get; } = 900;
     private Lion lion;
     private Rabbit rabbit;
 
