@@ -35,13 +35,28 @@ public partial class Animal : LivingCreature
 
     public void Move()
     {
-        Location = Location + velocity;
-        if (Location.Y > 450)
-        {
-            
-        }
         
+        Location = Location + velocity;
+        if (Location.X <= 25 || Location.X >= 1550) 
+        {
+            velocity = new Point(-velocity.X, velocity.Y);
+            Location = new Point(
+                Math.Clamp(Location.X, 50, 1550),
+                Location.Y
+            );
+        }
+
+        if (Location.Y <= 0 || Location.Y >= 850) 
+        {
+            velocity = new Point(velocity.X, -velocity.Y);
+            Location = new Point(
+                Location.X,
+                Math.Clamp(Location.Y, 0, 850)
+            );
+        }
+
     }
+
     private void Defecate()
     {
 
