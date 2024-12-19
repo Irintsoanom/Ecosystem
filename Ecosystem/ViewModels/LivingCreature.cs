@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Diagnostics;
+using System.Timers;
 
 namespace Ecosystem.ViewModels;
 
@@ -12,10 +14,15 @@ public partial class LivingCreature : GameObject
     private int energyReserve;
     [ObservableProperty]
     private Point startingPoint = new Point(1.0, 0);
+    private Timer lifeTimer = new Timer(3000);
 
     public LivingCreature(Point location):base(location) 
     {
+        this.lifePoint = 3;
+        this.energyReserve = 100;
 
+        this.lifeTimer.Elapsed += OnTimerElapsed;
+        this.lifeTimer.Start();
     }
 
     private void Feed()
@@ -25,5 +32,20 @@ public partial class LivingCreature : GameObject
     private void Reproduce()
     {
 
+    }
+    private void DrecreaseEnergy()
+    {
+        if (this.EnergyReserve > 0) 
+        {
+            this.EnergyReserve -= 10;
+        }
+        else if(this.LifePoint > 0)
+        {
+            this.LifePoint -= 1;
+        }
+    }
+    private void OnTimerElapsed(object? sender, EventArgs e) 
+    {
+        DrecreaseEnergy();
     }
 }
