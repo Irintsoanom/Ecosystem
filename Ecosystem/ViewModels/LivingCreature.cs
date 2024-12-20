@@ -42,6 +42,7 @@ public partial class LivingCreature : GameObject
         else if(this.LifePoint > 0)
         {
             this.LifePoint -= 1;
+            this.EnergyReserve = 100;
         }
     }
     private void OnTimerElapsed(object? sender, EventArgs e) 
