@@ -14,7 +14,7 @@ public partial class LivingCreature : GameObject
     private int energyReserve;
     [ObservableProperty]
     private Point startingPoint = new Point(1.0, 0);
-    private Timer lifeTimer = new Timer(3000);
+    private Timer lifeTimer = new Timer(15000);
 
     public LivingCreature(Point location):base(location) 
     {

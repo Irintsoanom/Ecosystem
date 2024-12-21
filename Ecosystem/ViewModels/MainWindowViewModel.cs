@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Ecosystem.ViewModels;
 
@@ -11,15 +12,18 @@ public partial class MainWindowViewModel : GameBase
     private Rabbit rabbit;
 
     // Liste des objets à afficher
-    public ObservableCollection<GameObject> GameObjects { get; } = new();
+    public ObservableCollection<GameObject> GameObjects { get; } = new(); 
 
     public MainWindowViewModel() {
-        lion = new Lion(new Point(Width / 2, Height / 2));
+        lion = new Lion(new Point(Width / 2, Height / 2), this);
         GameObjects.Add(lion);
-        rabbit = new Rabbit(new Point(Width / 3, Height / 3));
+        rabbit = new Rabbit(new Point(Width / 3, Height / 3), this);
         GameObjects.Add(rabbit);
     }
-
+    public void AddGameObject(GameObject gameObject)
+    {
+        GameObjects.Add(gameObject);
+    }
     protected override void Tick()
     {
         lion.Move();
