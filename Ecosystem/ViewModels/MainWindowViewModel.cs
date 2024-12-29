@@ -15,9 +15,9 @@ public partial class MainWindowViewModel : GameBase
     public ObservableCollection<GameObject> GameObjects { get; } = new(); 
 
     public MainWindowViewModel() {
-        lion = new Lion(new Point(Width / 2, Height / 2), this);
+        lion = new Lion(new Point(Width / 2, Height / 2));
         GameObjects.Add(lion);
-        rabbit = new Rabbit(new Point(Width / 3, Height / 3), this);
+        rabbit = new Rabbit(new Point(Width / 3, Height / 3));
         GameObjects.Add(rabbit);
     }
     public void AddGameObject(GameObject gameObject)

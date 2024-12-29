@@ -27,17 +27,15 @@ public partial class Animal : LivingCreature
 
     private Timer poopTimer = new Timer(1000);
 
-    private MainWindowViewModel ecosystem;
 
 
-    public Animal(Point location, MainWindowViewModel ecosystem) : base(location)
+    public Animal(Point location) : base(location)
     {
         this.sex = "Male";
         this.xVelocity = rand.Next(randVelocity.Count);
         this.yVelocity = rand.Next(randVelocity.Count);
         this.velocity = new Point(randVelocity[xVelocity], randVelocity[yVelocity]);
         this.poopTimer.Elapsed += OnTimerElapsed;
-        this.ecosystem = ecosystem;
         this.poopTimer.Start();
     }
 
@@ -67,10 +65,6 @@ public partial class Animal : LivingCreature
     private void Defecate()
     {
         OrganicWaste organicWaste = new OrganicWaste(this.Location);
-        if (organicWaste != null)
-        {
-            ecosystem.AddGameObject(organicWaste);
-        }
     }
     private void OnTimerElapsed(object? sender, EventArgs e)
     {
