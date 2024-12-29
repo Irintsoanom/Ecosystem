@@ -13,7 +13,7 @@ public partial class MainWindowViewModel : GameBase
     private Lion lion;
     private Rabbit rabbit;
 
-    private Timer poopTimer = new Timer(10000);
+    private Timer poopTimer = new Timer(2000);
 
     // Liste des objets à afficher
     public ObservableCollection<GameObject> GameObjects { get; } = new(); 

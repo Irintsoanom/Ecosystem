@@ -18,7 +18,7 @@ public partial class LivingCreature : GameObject
 
     public LivingCreature(Point location):base(location) 
     {
-        this.lifePoint = 3;
+        this.lifePoint = 1;
         this.energyReserve = 100;
 
         this.lifeTimer.Elapsed += OnTimerElapsed;
@@ -43,19 +43,18 @@ public partial class LivingCreature : GameObject
         {
             this.LifePoint -= 1;
             this.EnergyReserve = 100;
-
-            if (this.LifePoint == 0)
-            {
-                if (this is Animal animal)
-                {
-                    animal.Die();
-                }
-            }
         }
+        
     }
 
     private void OnTimerElapsed(object? sender, EventArgs e) 
     {
         DrecreaseEnergy();
+
+        if (this.LifePoint == 0 && this is Animal animal)
+        {
+            animal.Die();
+            this.lifeTimer.Stop();
+        }
     }
 }
