@@ -30,6 +30,10 @@ public partial class MainWindowViewModel : GameBase
     {
         GameObjects.Add(gameObject);
     }
+    public void RemoveGameObject(GameObject gameObject)
+    {
+        GameObjects.Remove(gameObject);
+    }
     protected override void Tick()
     {
         lion.Move();

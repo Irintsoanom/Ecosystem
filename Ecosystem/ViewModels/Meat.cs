@@ -6,12 +6,14 @@ using System.Timers;
 
 namespace Ecosystem.ViewModels;
 
-public partial class Meat
+public partial class Meat : GameObject
 {
     private Timer decayTimer = new Timer(3000);
-    public Meat()
+    public Meat(Point location) : base(location)
     {
         this.decayTimer.Elapsed += OnTimerElapsed;
+        this.decayTimer.Start();
+        Location = location;
     }
     private void Decay()
     {

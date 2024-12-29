@@ -65,6 +65,10 @@
 				<Image Width="24" Height="24" Source="/Assets/poop.png" />
 			</DataTemplate>
 
+			<DataTemplate DataType="{x:Type vm:Meat}">
+				<Image Width="64" Height="64" Source="/Assets/meat.png" />
+			</DataTemplate>
+
         </ItemsControl.DataTemplates>
     </ItemsControl>
 </Window>

@@ -38,7 +38,6 @@ public partial class Animal : LivingCreature
 
     public void Move()
     {
-        
         Location = Location + velocity;
         if (Location.X <= 25 || Location.X >= 1550) 
         {
@@ -63,5 +62,14 @@ public partial class Animal : LivingCreature
     {
         OrganicWaste organicWaste = new OrganicWaste(this.Location);
         ecosystem.AddGameObject(organicWaste);
+    }
+    public void Die()
+    {
+        if(this.LifePoint == 0)
+        {
+            Meat meat = new Meat(this.Location);
+            ecosystem.AddGameObject(meat);
+            ecosystem.RemoveGameObject(this);
+        }
     }
 }
