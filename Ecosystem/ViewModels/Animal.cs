@@ -65,11 +65,8 @@ public partial class Animal : LivingCreature
     }
     public void Die()
     {
-        if(this.LifePoint == 0)
-        {
-            Meat meat = new Meat(this.Location);
-            ecosystem.AddGameObject(meat);
-            ecosystem.RemoveGameObject(this);
-        }
+        Meat meat = new Meat(this.Location);
+        ecosystem.AddGameObject(meat);
+        ecosystem.RemoveGameObject(this);
     }
 }
