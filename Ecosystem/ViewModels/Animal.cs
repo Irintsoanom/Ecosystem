@@ -65,7 +65,7 @@ public partial class Animal : LivingCreature
     }
     public void Die()
     {
-        Meat meat = new Meat(this.Location);
+        Meat meat = new Meat(this.Location, ecosystem);
         ecosystem.AddGameObject(meat);
         ecosystem.RemoveGameObject(this);
     }
