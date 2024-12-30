@@ -20,7 +20,7 @@ public partial class Plant : LivingCreature
 
     public Plant(Point point, MainWindowViewModel mainWindowViewModel) : base(point)
     {
-        this.rootArea = 256;
+        this.rootArea = 300;
         this.seedZone = 256;
         this.mainWindowViewModel = mainWindowViewModel;
         this.seedTimer = new Timer(1000);
@@ -43,10 +43,14 @@ public partial class Plant : LivingCreature
     }
     private void SpreadSeed()
     {
-        Plant plant = new Plant(new Point(
-            Location.X + rand.Next(-SeedZone, SeedZone),
-            Location.Y + rand.Next(-SeedZone, SeedZone)
-        ), mainWindowViewModel);
+        double newX = Location.X + rand.Next(-SeedZone, SeedZone);
+        double newY = Location.Y + rand.Next(-SeedZone, SeedZone);
+
+        // Limiter les coordonnées à l'espace de jeu
+        newX = Math.Max(0, Math.Min(mainWindowViewModel.Width, newX));
+        newY = Math.Max(0, Math.Min(mainWindowViewModel.Height, newY));
+
+        Plant plant = new Plant(new Point(newX, newY), mainWindowViewModel);
         mainWindowViewModel.AddGameObject(plant);
     }
     private double VectorDistance(Point p1, Point p2)
