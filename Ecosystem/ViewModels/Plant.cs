@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Linq;
+using System.Timers;
 
 namespace Ecosystem.ViewModels;
 
@@ -14,11 +15,17 @@ public partial class Plant : LivingCreature
     private MainWindowViewModel mainWindowViewModel;
     public double CenteredX => Location.X - RootArea / 2;
     public double CenteredY => Location.Y - RootArea / 2;
+    private Timer seedTimer;
+    private Random rand = new Random();
 
     public Plant(Point point, MainWindowViewModel mainWindowViewModel) : base(point)
     {
-        this.rootArea = 128;
+        this.rootArea = 256;
+        this.seedZone = 256;
         this.mainWindowViewModel = mainWindowViewModel;
+        this.seedTimer = new Timer(1000);
+        this.seedTimer.Elapsed += OnTimerElapsed;
+        this.seedTimer.Start();
     }
     public void ConsumeOrganicWaste()
     {
@@ -36,10 +43,19 @@ public partial class Plant : LivingCreature
     }
     private void SpreadSeed()
     {
-
+        Plant plant = new Plant(new Point(
+            Location.X + rand.Next(-SeedZone, SeedZone),
+            Location.Y + rand.Next(-SeedZone, SeedZone)
+        ), mainWindowViewModel);
+        mainWindowViewModel.AddGameObject(plant);
     }
     private double VectorDistance(Point p1, Point p2)
     {
         return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
+    }
+
+    private void OnTimerElapsed(object? sender, EventArgs e)
+    {
+        SpreadSeed();
     }
 }
