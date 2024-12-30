@@ -23,7 +23,7 @@ public partial class Plant : LivingCreature
         this.rootArea = 300;
         this.seedZone = 256;
         this.mainWindowViewModel = mainWindowViewModel;
-        this.seedTimer = new Timer(1000);
+        this.seedTimer = new Timer(15000);
         this.seedTimer.Elapsed += OnTimerElapsed;
         this.seedTimer.Start();
     }
