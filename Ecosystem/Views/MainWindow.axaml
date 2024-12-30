@@ -71,16 +71,6 @@
 			</DataTemplate>
 
 			<DataTemplate DataType="{x:Type vm:Plant}">
-				<Canvas>
-					<Ellipse
-							Width="{Binding RootArea}"
-							Height="{Binding RootArea}"
-							Fill="Transparent"
-							Stroke="Green"
-							StrokeThickness="2"
-							Canvas.Left="{Binding CenteredX}"
-							Canvas.Top="{Binding CenteredY}" />
-
 					<StackPanel>
 						<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
 							<Image
@@ -100,7 +90,7 @@
 						<Image Width="64" Height="64"
 							Source="/Assets/plant.png"/>
 					</StackPanel>
-				</Canvas>
+				
 			</DataTemplate>
 			
 		</ItemsControl.DataTemplates>
