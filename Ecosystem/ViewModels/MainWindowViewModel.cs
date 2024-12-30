@@ -32,7 +32,8 @@ public partial class MainWindowViewModel : GameBase
         plantList = new List<Plant>();
         for(int i = 0; i < 5; i++)
         {
-            plantList.Add(new Plant(new Point(rand.Next(Width), rand.Next(Height))));
+            Plant plant = new Plant(new Point(rand.Next(Width), rand.Next(Height)), this);
+            plantList.Add(plant);
             GameObjects.Add(plantList[i]);
         }
 
@@ -53,6 +54,9 @@ public partial class MainWindowViewModel : GameBase
             if (gameObject is Animal animal)
             {
                 animal.Move();
+            } else if(gameObject is Plant plant)
+            {
+                plant.ConsumeOrganicWaste();
             }
         }
     }
