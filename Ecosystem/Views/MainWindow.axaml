@@ -68,10 +68,39 @@
 			<DataTemplate DataType="{x:Type vm:Meat}">
 				<Image Width="64" Height="64" Source="/Assets/meat.png" />
 			</DataTemplate>
-
-			<DataTemplate DataType="{x:Type vm:Plant}">
-				<Image Width="64" Height="64" Source="/Assets/plant.png" />
-			</DataTemplate>
+				
+				<DataTemplate DataType="{x:Type vm:Plant}">
+					<Canvas>
+						<Ellipse
+								Width="{Binding RootArea}"
+								Height="{Binding RootArea}"
+								Fill="Transparent"
+								Stroke="Green"
+								StrokeThickness="2"
+								Canvas.Left="{Binding CenteredX}"
+								Canvas.Top="{Binding CenteredY}" />
+					
+						<StackPanel>
+							<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+								<Image 
+									Width="24" 
+									Height="24" 
+									Source="/Assets/heart.png" 
+									Margin="0,0,5,0" />
+								<TextBlock 
+									Text="{Binding LifePoint}" 
+									Foreground="White" 
+									VerticalAlignment="Center" />
+							</StackPanel>
+							<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+								<Image Width="24" Height="24" Source="/Assets/energy.png" Margin="0,0,5,0" />
+								<TextBlock Text="{Binding EnergyReserve}" VerticalAlignment="Center" />
+							</StackPanel>
+							<Image Width="64" Height="64"
+								Source="/Assets/plant.png"/>
+						</StackPanel>
+					</Canvas>
+				</DataTemplate>
 
         </ItemsControl.DataTemplates>
     </ItemsControl>
