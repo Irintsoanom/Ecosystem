@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -13,11 +14,12 @@ public partial class MainWindowViewModel : GameBase
     public int Height { get; } = 900;
     private Lion lion;
     private Rabbit rabbit;
-
+    private List<Plant> plantList;
+    private Random rand = new Random();
     private Timer poopTimer = new Timer(2000);
 
     // Liste des objets à afficher
-    public ObservableCollection<GameObject> GameObjects { get; } = new(); 
+    public ObservableCollection<GameObject> GameObjects { get; } = new();
 
     public MainWindowViewModel() {
         lion = new Lion(new Point(Width / 2, Height / 2), this);
@@ -26,6 +28,13 @@ public partial class MainWindowViewModel : GameBase
         GameObjects.Add(rabbit);
         this.poopTimer.Elapsed += OnTimerElapsed;
         this.poopTimer.Start();
+
+        plantList = new List<Plant>();
+        for(int i = 0; i < 5; i++)
+        {
+            plantList.Add(new Plant(new Point(rand.Next(Width), rand.Next(Height))));
+            GameObjects.Add(plantList[i]);
+        }
 
     }
     public void AddGameObject(GameObject gameObject)
