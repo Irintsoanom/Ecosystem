@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Timers;
 
 namespace Ecosystem.ViewModels;
 
@@ -26,7 +25,6 @@ public partial class Animal : LivingCreature
     private List<int> randVelocity = new List<int>() { -2, -1, 1, 2 };
 
     private MainWindowViewModel ecosystem;
-    private Timer poopTimer = new Timer(1000);
 
 
     public Animal(Point location, MainWindowViewModel ecosystem) : base(location)
@@ -36,8 +34,6 @@ public partial class Animal : LivingCreature
         this.yVelocity = rand.Next(randVelocity.Count);
         this.velocity = new Point(randVelocity[xVelocity], randVelocity[yVelocity]);
         this.ecosystem = ecosystem;
-        this.poopTimer.Elapsed += OnTimerElapsed;
-        this.poopTimer.Start();
     }
 
     public void Move()
@@ -72,9 +68,5 @@ public partial class Animal : LivingCreature
         Meat meat = new Meat(this.Location);
         ecosystem.AddGameObject(meat);
         ecosystem.RemoveGameObject(this);
-    }
-    private void OnTimerElapsed(object? sender, EventArgs e)
-    {
-        Defecate();
     }
 }

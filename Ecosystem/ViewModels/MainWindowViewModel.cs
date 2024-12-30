@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Timers;
 
 namespace Ecosystem.ViewModels;
@@ -13,7 +14,7 @@ public partial class MainWindowViewModel : GameBase
     private Lion lion;
     private Rabbit rabbit;
 
-   
+    private Timer poopTimer = new Timer(2000);
 
     // Liste des objets à afficher
     public ObservableCollection<GameObject> GameObjects { get; } = new(); 
@@ -23,7 +24,9 @@ public partial class MainWindowViewModel : GameBase
         GameObjects.Add(lion);
         rabbit = new Rabbit(new Point(Width / 3, Height / 3), this);
         GameObjects.Add(rabbit);
-        
+        this.poopTimer.Elapsed += OnTimerElapsed;
+        this.poopTimer.Start();
+
     }
     public void AddGameObject(GameObject gameObject)
     {
@@ -35,7 +38,24 @@ public partial class MainWindowViewModel : GameBase
     }
     protected override void Tick()
     {
-        lion.Move();
-        rabbit.Move();
+        var gameObjectsCopy = GameObjects.ToList();
+        foreach (GameObject gameObject in gameObjectsCopy)
+        {
+            if (gameObject is Animal animal)
+            {
+                animal.Move();
+            }
+        }
+    }
+    private void OnTimerElapsed(object? sender, EventArgs e)
+    {
+        var gameObjectsCopy = GameObjects.ToList();
+        foreach (GameObject gameObject in gameObjectsCopy)
+        {
+            if (gameObject is Animal animal)
+            {
+                animal.Defecate();
+            }
+        }
     }
 }
