@@ -1,3 +1,3 @@
-# AvaloniaGameBase
+# Ecosystem project 
 
-Projet de base pour réaliser une application graphique 2D avec Avalonia UI
+This project aims to simulate the behavior of different living creatures in an ecosystem, including animals and plants. Their natural behaviors, such as reproducing, eating, and hunting, are autonomously simulated in this app.
