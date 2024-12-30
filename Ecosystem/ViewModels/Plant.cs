@@ -46,7 +46,6 @@ public partial class Plant : LivingCreature
         double newX = Location.X + rand.Next(-SeedZone, SeedZone);
         double newY = Location.Y + rand.Next(-SeedZone, SeedZone);
 
-        // Limiter les coordonnées à l'espace de jeu
         newX = Math.Max(0, Math.Min(mainWindowViewModel.Width, newX));
         newY = Math.Max(0, Math.Min(mainWindowViewModel.Height, newY));
 
