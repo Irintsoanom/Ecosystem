@@ -13,7 +13,7 @@ public partial class MainWindowViewModel : GameBase
     private Lion lion;
     private Rabbit rabbit;
 
-    private Timer poopTimer = new Timer(2000);
+   
 
     // Liste des objets à afficher
     public ObservableCollection<GameObject> GameObjects { get; } = new(); 
@@ -23,8 +23,7 @@ public partial class MainWindowViewModel : GameBase
         GameObjects.Add(lion);
         rabbit = new Rabbit(new Point(Width / 3, Height / 3), this);
         GameObjects.Add(rabbit);
-        this.poopTimer.Elapsed += OnTimerElapsed;
-        this.poopTimer.Start();
+        
     }
     public void AddGameObject(GameObject gameObject)
     {
@@ -38,10 +37,5 @@ public partial class MainWindowViewModel : GameBase
     {
         lion.Move();
         rabbit.Move();
-    }
-    private void OnTimerElapsed(object? sender, EventArgs e)
-    {
-        lion.Defecate();
-        rabbit.Defecate();
     }
 }
