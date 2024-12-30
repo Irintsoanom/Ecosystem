@@ -50,7 +50,12 @@ public partial class Plant : LivingCreature
         newY = Math.Max(0, Math.Min(mainWindowViewModel.Height, newY));
 
         Plant plant = new Plant(new Point(newX, newY), mainWindowViewModel);
-        mainWindowViewModel.AddGameObject(plant);
+
+
+        Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+        {
+            mainWindowViewModel.AddGameObject(plant);
+        });
     }
     private double VectorDistance(Point p1, Point p2)
     {
