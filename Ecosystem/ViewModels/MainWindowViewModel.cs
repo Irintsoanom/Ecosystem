@@ -60,6 +60,7 @@ public partial class MainWindowViewModel : GameBase
             if (gameObject is Animal animal)
             {
                 animal.Move();
+                animal.Reproduce();
                 if(animal is Lion lion)
                 {
                     lion.Hunt();

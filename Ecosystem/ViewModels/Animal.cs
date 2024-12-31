@@ -69,7 +69,7 @@ public partial class Animal : LivingCreature
         OrganicWaste organicWaste = new OrganicWaste(this.Location);
         ecosystem.AddGameObject(organicWaste);
     }
-    private void Reproduce()
+    public void Reproduce()
     {
         var animals = ecosystem.GameObjects
             .OfType<Animal>()
