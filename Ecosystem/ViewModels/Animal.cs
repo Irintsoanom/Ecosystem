@@ -81,6 +81,8 @@ public partial class Animal : LivingCreature
                 VectorDistance(animal.Location, this.Location) < this.ContactZone)
             .ToList();
 
+        var newAnimals = new List<Animal>();
+
         foreach (var animal in animals)
         {
             if(this.Sex != animal.Sex && this.Name == animal.Name)
@@ -92,24 +94,25 @@ public partial class Animal : LivingCreature
                 newY = Math.Max(0, Math.Min(ecosystem.Height, newY));
 
 
-                if(this.Name == "Lion")
+                if (this.Name == "Lion")
                 {
                     Lion lion = new Lion(new Point(newX, newY), ecosystem, "Male", "Lion");
-                    Avalonia.Threading.Dispatcher.UIThread.Post(() =>
-                    {
-                        ecosystem.AddGameObject(lion);
-                    });
+                    newAnimals.Add(lion);
                 }
                 else
                 {
                     Rabbit rabbit = new Rabbit(new Point(newX, newY), ecosystem, "Male", "Rabbit");
-                    Avalonia.Threading.Dispatcher.UIThread.Post(() =>
-                    {
-                        ecosystem.AddGameObject(rabbit);
-                    });
+                    newAnimals.Add(rabbit);
                 }
             }
         }
+        Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+        {
+            foreach (var newAnimal in newAnimals)
+            {
+                ecosystem.AddGameObject(newAnimal);
+            }
+        });
     }
     private double VectorDistance(Point p1, Point p2)
     {
