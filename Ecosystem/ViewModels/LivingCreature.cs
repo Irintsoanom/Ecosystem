@@ -14,11 +14,11 @@ public partial class LivingCreature : GameObject
     private int energyReserve;
     [ObservableProperty]
     private Point startingPoint = new Point(1.0, 0);
-    private Timer lifeTimer = new Timer(1000);
+    private Timer lifeTimer = new Timer(5000);
 
     public LivingCreature(Point location):base(location) 
     {
-        this.lifePoint = 1;
+        this.lifePoint = 3;
         this.energyReserve = 100;
 
         this.lifeTimer.Elapsed += OnTimerElapsed;
