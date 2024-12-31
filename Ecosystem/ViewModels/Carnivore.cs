@@ -24,7 +24,7 @@ public partial class Carnivore: Animal
         foreach (var prey in preyList)
         {
             this.EnergyReserve += 40;
-            ecosystem.RemoveGameObject(prey);
+            prey.Die();
         }
     }
     private double VectorDistance(Point p1, Point p2)
