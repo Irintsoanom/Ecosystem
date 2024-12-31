@@ -60,6 +60,14 @@ public partial class MainWindowViewModel : GameBase
             if (gameObject is Animal animal)
             {
                 animal.Move();
+                if(animal is Lion lion)
+                {
+                    lion.Hunt();
+                }
+                else if (animal is Rabbit rabbit)
+                {
+                    rabbit.ConsumePlants();
+                }
             } else if(gameObject is Plant plant)
             {
                 plant.ConsumeOrganicWaste();
