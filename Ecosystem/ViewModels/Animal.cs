@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Timers;
 
 namespace Ecosystem.ViewModels;
 
@@ -28,6 +29,7 @@ public partial class Animal : LivingCreature
     private List<int> randVelocity = new List<int>() { -2, -1, 1, 2 };
 
     private MainWindowViewModel ecosystem;
+    private Timer reproduceTimer = new Timer(5000);
 
 
     public Animal(Point location, MainWindowViewModel ecosystem, string sex, string name) : base(location)
@@ -40,6 +42,8 @@ public partial class Animal : LivingCreature
         this.yVelocity = rand.Next(randVelocity.Count);
         this.velocity = new Point(randVelocity[xVelocity], randVelocity[yVelocity]);
         this.ecosystem = ecosystem;
+        this.reproduceTimer.Elapsed += OnReproduceTimerElapsed; 
+        this.reproduceTimer.Start();
     }
 
     public void Move()
@@ -69,7 +73,7 @@ public partial class Animal : LivingCreature
         OrganicWaste organicWaste = new OrganicWaste(this.Location);
         ecosystem.AddGameObject(organicWaste);
     }
-    public void Reproduce()
+    private void Reproduce()
     {
         var animals = ecosystem.GameObjects
             .OfType<Animal>()
@@ -116,5 +120,9 @@ public partial class Animal : LivingCreature
         Meat meat = new Meat(this.Location, ecosystem);
         ecosystem.AddGameObject(meat);
         ecosystem.RemoveGameObject(this);
+    }
+    private void OnReproduceTimerElapsed(object? sender, EventArgs e)
+    {
+        Reproduce();
     }
 }
