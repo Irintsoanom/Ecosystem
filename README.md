@@ -29,6 +29,6 @@ Il est possible d'ajouter de nouvelles fonctionnalités à ce projet sans modifi
 - **Structure des classes et héritages**
 Le projet utilise une hiérarchie d’héritage claire, où des classes parent (comme `LivingCreature` et `Animal`) définissent des comportements communs, tandis que des sous-classes spécialisées (comme `Carnivore`, `Herbivore`, `Plant`) permettent l’extension des comportements.
 - **Utilisation du polymorphisme**
-Les interactions dans le projet, comme la chasse (Hunt()) ou la consommation de plantes (ConsumePlants()), semblent être définies de manière générique. Par exemple :
+Les interactions dans le projet, comme la chasse (Hunt()) ou la consommation de plantes (ConsumePlants()), sont définies de manière générique. Par exemple :
     - Un carnivore peut appeler Hunt() pour tuer un herbivore, indépendamment du type exact d’herbivore.
     - Un herbivore peut appeler ConsumePlants() pour consommer une plante, indépendamment du type de plante.
