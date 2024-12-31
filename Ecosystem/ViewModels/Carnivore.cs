@@ -13,7 +13,7 @@ public partial class Carnivore: Animal
     { 
         this.ecosystem = ecosystem;
     }
-    private void Attack()
+    public void Hunt()
     {
         var preyList = ecosystem.GameObjects
             .OfType<Herbivore>()
