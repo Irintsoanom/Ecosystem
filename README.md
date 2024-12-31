@@ -20,7 +20,7 @@ Chaque classe du diagramme a une responsabilité unique et bien définie :
 - `Plant` : Responsable des comportements spécifiques aux plantes (consommation de déchets organiques, dispersion des graines).
 - `Carnivore` / `Herbivore` : Héritent d’`Animal` et ajoutent des comportements spécifiques, comme la chasse pour les carnivores et la consommation de plantes pour les herbivores.
 - `OrganicWaste` : Représente les déchets organiques, sans autre responsabilité.
-- `Meat` : Représente la viande produite par les carnivores après une chasse.
+- `Meat` : Représente la viande produite par les carnivores après une chasse ainsi que le reste des animaux n'ayant plus de points de vie.
 
 ### Open/closed Principle
 > Les entités logicielles (classes, modules, fonctions, etc.) doivent être ouvertes à l'extension mais fermées à la modification.
