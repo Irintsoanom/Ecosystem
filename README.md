@@ -13,4 +13,10 @@ Ce projet vise à simuler le comportement de différentes créatures vivantes da
 
 ## Principe SOLID
 ### Single Responsibility Principle
-> "Les classes et les méthodes ne doivent être responsables que d'une chose."
+> Les classes et les méthodes ne doivent être responsables que d'une chose.
+Chaque classe du diagramme a une responsabilité unique et bien définie :
+- Animal : Responsable des comportements généraux des animaux (mouvement, reproduction, mort, etc.).
+- Plant : Responsable des comportements spécifiques aux plantes (consommation de déchets organiques, dispersion des graines).
+- Carnivore / Herbivore : Héritent d’Animal et ajoutent des comportements spécifiques, comme la chasse pour les carnivores et la consommation de plantes pour les herbivores.
+- OrganicWaste : Représente les déchets organiques, sans autre responsabilité.
+- Meat : Représente la viande produite par les carnivores après une chasse.
