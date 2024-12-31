@@ -5,7 +5,7 @@ namespace Ecosystem.ViewModels;
 
 public partial class Herbivore : Animal
 {
-    public Herbivore(Point location, MainWindowViewModel ecosystem) : base(location, ecosystem) 
+    public Herbivore(Point location, MainWindowViewModel ecosystem, string sex, string name) : base(location, ecosystem, sex, name) 
     {
         
     }

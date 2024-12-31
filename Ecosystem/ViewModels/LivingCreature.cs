@@ -24,15 +24,6 @@ public partial class LivingCreature : GameObject
         this.lifeTimer.Elapsed += OnTimerElapsed;
         this.lifeTimer.Start();
     }
-
-    private void Feed()
-    {
-
-    }
-    private void Reproduce()
-    {
-
-    }
     private void DrecreaseEnergy()
     {
         if (this.EnergyReserve > 0)

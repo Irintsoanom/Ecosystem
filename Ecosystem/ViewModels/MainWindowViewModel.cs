@@ -14,6 +14,8 @@ public partial class MainWindowViewModel : GameBase
     public int Height { get; } = 900;
     private Lion lion;
     private Rabbit rabbit;
+    private Lion lion2;
+    private Rabbit rabbit2;
     private List<Plant> plantList;
     private Random rand = new Random();
     private Timer poopTimer = new Timer(2000);
@@ -22,10 +24,14 @@ public partial class MainWindowViewModel : GameBase
     public ObservableCollection<GameObject> GameObjects { get; } = new();
 
     public MainWindowViewModel() {
-        lion = new Lion(new Point(Width / 2, Height / 2), this);
+        lion = new Lion(new Point(Width / 2, Height / 2), this, "Male", "Lion");
         GameObjects.Add(lion);
-        rabbit = new Rabbit(new Point(Width / 3, Height / 3), this);
+        rabbit = new Rabbit(new Point(Width / 3, Height / 3), this, "Male", "Rabbit");
         GameObjects.Add(rabbit);
+        lion2 = new Lion(new Point(Width / 2, Height / 2), this, "Female", "Lion");
+        GameObjects.Add(lion2);
+        rabbit2 = new Rabbit(new Point(Width / 3, Height / 3), this, "Female", "Rabbit");
+        GameObjects.Add(rabbit2);
         this.poopTimer.Elapsed += OnTimerElapsed;
         this.poopTimer.Start();
 
