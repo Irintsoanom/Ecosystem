@@ -46,10 +46,7 @@ public partial class MainWindowViewModel : GameBase
     }
     public void AddGameObject(GameObject gameObject)
     {
-        if (gameObject != null)
-        {
-            GameObjects.Add(gameObject);
-        }
+        GameObjects.Add(gameObject);
     }
     public void RemoveGameObject(GameObject gameObject)
     {
